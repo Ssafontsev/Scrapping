@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as Bs
-DATA_URL = 'https://habr.com/ru/all/'
+DATA_URL = 'https://habr.com/ru'
 KEYWORDS = ['дизайн', 'фото', 'web', 'python']
 SOURCE = requests.get(DATA_URL).text
 
@@ -14,4 +14,4 @@ for article in articles:
     for el in text:
         for word in KEYWORDS:
             if word in el.text.lower():
-                print(article.find('time').text, '-', title, '-', DATA_URL + link)
+                print(article.find('time').text, '-', title, '-', DATA_URL[0:16] + link)
